@@ -9,6 +9,8 @@
 #ifndef PIC16F84A_emulator_runtime_h
 #define PIC16F84A_emulator_runtime_h
 
-
+void initialize(void);
+void reset(void);
+void run(void);
 
 #endif

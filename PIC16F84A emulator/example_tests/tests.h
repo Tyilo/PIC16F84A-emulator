@@ -11,9 +11,6 @@
 
 #include <stdint.h>
 
-void initialize(void);
-void reset(void);
-void run(void);
 void test(void);
 
 #endif
