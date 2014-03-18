@@ -90,6 +90,6 @@ void test(void) {
 		
 		reset();
 		
-		printf("Completed test %d sucessfully!\n", i + 1);
+		printf("Completed test %d/%lu.\n", i + 1, LENGTH(tests));
 	}
 }
