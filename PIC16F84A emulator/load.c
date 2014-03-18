@@ -15,6 +15,7 @@
 #include <assert.h>
 #include <stdbool.h>
 #include <libgen.h>
+#include <glob.h>
 
 #include "state.h"
 #include "utils.h"
@@ -231,18 +232,21 @@ void load_files(const char *dir) {
 	char *map_file;
 	asprintf(&map_file, "%s.map", dist_prefix);
 	
-	char *lst_file;
-	char *project_name_no_ext = strdup(project_name);
-	project_name_no_ext[strlen(project_name_no_ext) - 2] = '\0';
-	asprintf(&lst_file, "%s/build/default/production/%s.lst", dir, project_name_no_ext);
-	
 	load_hex(hex_file);
 	load_map(map_file);
-	load_lst(lst_file);
+	
+	char *lst_pattern;
+	asprintf(&lst_pattern, "%s/build/default/production/*.lst", dir);
+	glob_t pglob;
+	glob(lst_pattern, 0, NULL, &pglob);
+	
+	for(int i = 0; i < pglob.gl_matchc; i++) {
+		load_lst(pglob.gl_pathv[i]);
+	}
 	
 	free(dist_prefix);
 	free(hex_file);
 	free(map_file);
-	free(project_name_no_ext);
-	free(lst_file);
+	free(lst_pattern);
+	globfree(&pglob);
 }
