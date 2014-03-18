@@ -223,6 +223,18 @@ void load_lst(const char *path) {
 }
 
 void load_files(const char *dir) {
+	struct symbol *s, *tmp;
+	
+	HASH_ITER(hh, prog_symbols, s, tmp) {
+		HASH_DEL(prog_symbols, s);
+		free((void *)s->name);
+	}
+	
+	HASH_ITER(hh, ram_symbols, s, tmp) {
+		HASH_DEL(ram_symbols, s);
+		free((void *)s->name);
+	}
+	
 	char *project_name = basename((char *)dir);
 	char *dist_prefix;
 	asprintf(&dist_prefix, "%s/dist/default/production/%s.production", dir, project_name);
