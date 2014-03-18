@@ -39,7 +39,7 @@ uint64_t atoi_n(char *a, int n) {
 	return value;
 }
 
-void load_hex(char *path) {
+void load_hex(const char *path) {
 	memset(prog_mem, 0, sizeof(prog_mem));
 	
 	FILE *f = fopen(path, "r");
@@ -87,7 +87,7 @@ char *find_word(char **str) {
 	return token;
 }
 
-void load_map(char *path) {
+void load_map(const char *path) {
 	FILE *f = fopen(path, "r");
 	
 	assert(f);
@@ -137,7 +137,7 @@ void load_map(char *path) {
 	fclose(f);
 }
 
-void load_lst(char *path) {
+void load_lst(const char *path) {
 	FILE *f = fopen(path, "r");
 	
 	assert(f);
@@ -207,8 +207,8 @@ void load_lst(char *path) {
 	fclose(f);
 }
 
-void load_files(char *dir) {
-	char *project_name = basename(dir);
+void load_files(const char *dir) {
+	char *project_name = basename((char *)dir);
 	char *dist_prefix;
 	asprintf(&dist_prefix, "%s/dist/default/production/%s.production", dir, project_name);
 	
