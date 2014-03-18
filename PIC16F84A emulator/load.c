@@ -20,6 +20,8 @@
 #include "utils.h"
 #include "symbols.h"
 
+#define CONFIG_ADDRESS 0x400e
+
 uint64_t atoi_n(char *a, int n) {
 	uint64_t value = 0;
 	
@@ -62,10 +64,13 @@ void load_hex(const char *path) {
 		if(type != 0) {
 			continue;
 		}
+		if(address == CONFIG_ADDRESS) {
+			continue;
+		}
 		
 		uint64_t max_address = (address + data_len) / 2;
 		if(max_address > LENGTH(prog_mem)) {
-			printf("WARNING: Ignored hex field with address 0x%llx\n", max_address);
+			printf("WARNING: Ignored hex field with address 0x%llx\n", address);
 			continue;
 		}
 		
