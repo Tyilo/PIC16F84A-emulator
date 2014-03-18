@@ -77,14 +77,31 @@ void load_hex(const char *path) {
 	fclose(f);
 }
 
-char *find_word(char **str) {
+char *next_word(char **str) {
 	char *token;
 	
 	while((token = strsep(str, " \n\t\r")) && token[0] == '\0') {
 		
 	}
-	
+
 	return token;
+}
+
+const char *find_word(const char *str, const char *word) {
+	char *s = strdup(str);
+	char *s_start = s;
+	
+	char *w;
+	while((w = next_word(&s))) {
+		if(strcasecmp(word, w) == 0) {
+			free(s_start);
+			return str + (w - s_start);
+		}
+	}
+	
+	free(s_start);
+	
+	return NULL;
 }
 
 void load_map(const char *path) {
@@ -98,9 +115,7 @@ void load_map(const char *path) {
 	size_t linecap = 0;
 	ssize_t linelen;
 	while((linelen = getline(&line, &linecap, f)) > 0) {
-		char *loc = strstr(line, "Symbols - Sorted by Address");
-		
-		if(loc) {
+		if(strstr(line, "Symbols - Sorted by Address")) {
 			header_lines_ago = 0;
 			continue;
 		}
@@ -114,14 +129,14 @@ void load_map(const char *path) {
 		if(header_lines_ago >= 3) {
 			char *l_start = strdup(line);
 			char *l = l_start;
-			char *name = find_word(&l);
+			char *name = next_word(&l);
 			
 			if(!name) {
 				free(l_start);
 				break;
 			}
 			
-			char *a = find_word(&l);
+			char *a = next_word(&l);
 			
 			uint16_t address = strtol(a, NULL, 0);
 			
@@ -142,56 +157,50 @@ void load_lst(const char *path) {
 	
 	assert(f);
 	
-	bool cblock_found = false;
+	bool inside_cblock = false;
 	
 	char *line = NULL;
 	size_t linecap = 0;
 	ssize_t linelen;
 	while((linelen = getline(&line, &linecap, f)) > 0) {
-		char *loc = strstr(line, " cblock ");
-		
-		if(loc) {
-			cblock_found = true;
+		if(find_word(line, "cblock")) {
+			inside_cblock = true;
 			continue;
 		}
 		
-		if(!cblock_found) {
+		if(!inside_cblock && !find_word(line, "equ")) {
 			continue;
 		}
 		
-		loc = strstr(line, " endc ");
-		
-		if(loc) {
-			break;
-		}
-		
-		if(linelen < 3) {
+		if(find_word(line, "endc")) {
+			inside_cblock = false;
 			continue;
 		}
 		
-		if(line[2] != '0') {
+		if(linelen < 3 || line[2] != '0') {
 			continue;
 		}
 		
 		char *l_start = strdup(line);
 		char *l = l_start;
 		
-		char *a = find_word(&l);
+		char *a = next_word(&l);
 		if(!a) {
 			free(l_start);
-			break;
+			continue;
 		}
 		
-		char *lineno = find_word(&l);
+		char *lineno = next_word(&l);
 		if(!lineno) {
 			free(l_start);
-			break;
+			continue;
 		}
 		
-		char *name = find_word(&l);
+		char *name = next_word(&l);
+		
 		if(!name) {
 			free(l_start);
-			break;
+			continue;
 		}
 		
 		uint8_t address = strtol(a, NULL, 16);
