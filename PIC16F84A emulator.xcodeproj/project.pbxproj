@@ -7,45 +7,72 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		55754FA8182403C4002FA225 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 55754FA7182403C4002FA225 /* main.c */; };
-		55787BCA18D86AD000525B02 /* tests.c in Sources */ = {isa = PBXBuildFile; fileRef = 55787BC918D86AD000525B02 /* tests.c */; };
 		55787BCD18D86B4800525B02 /* instructions.c in Sources */ = {isa = PBXBuildFile; fileRef = 55787BCC18D86B4800525B02 /* instructions.c */; };
 		55787BD318D86C4100525B02 /* utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 55787BD218D86C4100525B02 /* utils.c */; };
 		55787BDA18D86D7400525B02 /* load.c in Sources */ = {isa = PBXBuildFile; fileRef = 55787BD918D86D7400525B02 /* load.c */; };
 		55787BDC18D86DA700525B02 /* symbols.c in Sources */ = {isa = PBXBuildFile; fileRef = 55787BDB18D86DA700525B02 /* symbols.c */; };
 		55787BE018D879BF00525B02 /* runtime.c in Sources */ = {isa = PBXBuildFile; fileRef = 55787BDF18D879BF00525B02 /* runtime.c */; };
+		55787BE818D8832A00525B02 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55787BE718D8832A00525B02 /* Cocoa.framework */; };
+		55787C1818D894A500525B02 /* runtime.c in Sources */ = {isa = PBXBuildFile; fileRef = 55787BDF18D879BF00525B02 /* runtime.c */; };
+		55787C1918D894A900525B02 /* symbols.c in Sources */ = {isa = PBXBuildFile; fileRef = 55787BDB18D86DA700525B02 /* symbols.c */; };
+		55787C1A18D894AC00525B02 /* load.c in Sources */ = {isa = PBXBuildFile; fileRef = 55787BD918D86D7400525B02 /* load.c */; };
+		55787C1B18D894AE00525B02 /* utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 55787BD218D86C4100525B02 /* utils.c */; };
+		55787C1C18D894B100525B02 /* instructions.c in Sources */ = {isa = PBXBuildFile; fileRef = 55787BCC18D86B4800525B02 /* instructions.c */; };
+		55787C2118D8B1BA00525B02 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 55787C1E18D8B1BA00525B02 /* main.c */; };
+		55787C2218D8B1BA00525B02 /* tests.c in Sources */ = {isa = PBXBuildFile; fileRef = 55787C1F18D8B1BA00525B02 /* tests.c */; };
+		55787C2618D8B53400525B02 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 55787C2418D8B52E00525B02 /* AppDelegate.m */; };
+		55787C2918D8B56700525B02 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55787C2718D8B56700525B02 /* MainMenu.xib */; };
+		55787C2B18D8B56F00525B02 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55787C2A18D8B56F00525B02 /* Images.xcassets */; };
+		55787C2D18D8B58000525B02 /* PIC16F84A Emulator-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55787C2C18D8B58000525B02 /* PIC16F84A Emulator-Info.plist */; };
+		55787C3018D8B59100525B02 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 55787C2F18D8B59100525B02 /* main.m */; };
+		55787C3418D8B5AB00525B02 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55787C3218D8B5AB00525B02 /* InfoPlist.strings */; };
+		55787C3718D8B5B000525B02 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 55787C3518D8B5B000525B02 /* Credits.rtf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		55754FA2182403C4002FA225 /* CopyFiles */ = {
+		55754FA2182403C4002FA225 /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
 			dstSubfolderSpec = 0;
 			files = (
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		55754FA4182403C4002FA225 /* PIC16F84A emulator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "PIC16F84A emulator"; sourceTree = BUILT_PRODUCTS_DIR; };
-		55754FA7182403C4002FA225 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
-		55754FB618241B25002FA225 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		55787BC918D86AD000525B02 /* tests.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tests.c; sourceTree = "<group>"; };
 		55787BCC18D86B4800525B02 /* instructions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = instructions.c; sourceTree = "<group>"; };
 		55787BD018D86BA800525B02 /* state.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = state.h; sourceTree = "<group>"; };
 		55787BD118D86BE700525B02 /* instructions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = instructions.h; sourceTree = "<group>"; };
 		55787BD218D86C4100525B02 /* utils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = utils.c; sourceTree = "<group>"; };
 		55787BD618D86C6F00525B02 /* constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
 		55787BD718D86C9E00525B02 /* utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
-		55787BD818D86D2400525B02 /* tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tests.h; sourceTree = "<group>"; };
 		55787BD918D86D7400525B02 /* load.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = load.c; sourceTree = "<group>"; };
 		55787BDB18D86DA700525B02 /* symbols.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = symbols.c; sourceTree = "<group>"; };
 		55787BDD18D86DB100525B02 /* symbols.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = symbols.h; sourceTree = "<group>"; };
 		55787BDE18D86E4000525B02 /* load.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = load.h; sourceTree = "<group>"; };
 		55787BDF18D879BF00525B02 /* runtime.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = runtime.c; sourceTree = "<group>"; };
 		55787BE118D879C500525B02 /* runtime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = runtime.h; sourceTree = "<group>"; };
+		55787BE618D8832A00525B02 /* PIC16F84A Emulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PIC16F84A Emulator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		55787BE718D8832A00525B02 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		55787BEA18D8832A00525B02 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		55787BEB18D8832A00525B02 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		55787BEC18D8832A00525B02 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		55787C1E18D8B1BA00525B02 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = main.c; path = example_tests/main.c; sourceTree = "<group>"; };
+		55787C1F18D8B1BA00525B02 /* tests.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = tests.c; path = example_tests/tests.c; sourceTree = "<group>"; };
+		55787C2018D8B1BA00525B02 /* tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tests.h; path = example_tests/tests.h; sourceTree = "<group>"; };
+		55787C2318D8B52000525B02 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = "PIC16F84A emulator/GUI/AppDelegate.h"; sourceTree = SOURCE_ROOT; };
+		55787C2418D8B52E00525B02 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = "PIC16F84A emulator/GUI/AppDelegate.m"; sourceTree = SOURCE_ROOT; };
+		55787C2818D8B56700525B02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "PIC16F84A emulator/GUI/Base.lproj/MainMenu.xib"; sourceTree = SOURCE_ROOT; };
+		55787C2A18D8B56F00525B02 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "PIC16F84A emulator/GUI/Images.xcassets"; sourceTree = SOURCE_ROOT; };
+		55787C2C18D8B58000525B02 /* PIC16F84A Emulator-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "PIC16F84A Emulator-Info.plist"; path = "PIC16F84A emulator/GUI/PIC16F84A Emulator-Info.plist"; sourceTree = SOURCE_ROOT; };
+		55787C2F18D8B59100525B02 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "PIC16F84A emulator/GUI/main.m"; sourceTree = SOURCE_ROOT; };
+		55787C3118D8B5A200525B02 /* PIC16F84A Emulator-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "PIC16F84A Emulator-Prefix.pch"; path = "PIC16F84A emulator/GUI/PIC16F84A Emulator-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		55787C3318D8B5AB00525B02 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "PIC16F84A emulator/GUI/en.lproj/InfoPlist.strings"; sourceTree = SOURCE_ROOT; };
+		55787C3618D8B5B000525B02 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = "PIC16F84A emulator/GUI/en.lproj/Credits.rtf"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,13 +83,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		55787BE318D8832A00525B02 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55787BE818D8832A00525B02 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		55754F9B182403C4002FA225 = {
 			isa = PBXGroup;
 			children = (
-				55754FA6182403C4002FA225 /* PIC16F84A emulator */,
+				55754FA6182403C4002FA225 /* emulator */,
+				55787C1D18D8B16900525B02 /* tests */,
+				55787BED18D8832A00525B02 /* GUI */,
 				55754FB518241B25002FA225 /* Frameworks */,
 				55754FA5182403C4002FA225 /* Products */,
 			);
@@ -72,14 +109,14 @@
 			isa = PBXGroup;
 			children = (
 				55754FA4182403C4002FA225 /* PIC16F84A emulator */,
+				55787BE618D8832A00525B02 /* PIC16F84A Emulator.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		55754FA6182403C4002FA225 /* PIC16F84A emulator */ = {
+		55754FA6182403C4002FA225 /* emulator */ = {
 			isa = PBXGroup;
 			children = (
-				55754FA7182403C4002FA225 /* main.c */,
 				55787BE118D879C500525B02 /* runtime.h */,
 				55787BDF18D879BF00525B02 /* runtime.c */,
 				55787BDD18D86DB100525B02 /* symbols.h */,
@@ -92,39 +129,102 @@
 				55787BD118D86BE700525B02 /* instructions.h */,
 				55787BCC18D86B4800525B02 /* instructions.c */,
 				55787BD618D86C6F00525B02 /* constants.h */,
-				55787BD818D86D2400525B02 /* tests.h */,
-				55787BC918D86AD000525B02 /* tests.c */,
 			);
+			name = emulator;
 			path = "PIC16F84A emulator";
 			sourceTree = "<group>";
 		};
 		55754FB518241B25002FA225 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				55754FB618241B25002FA225 /* XCTest.framework */,
+				55787BE718D8832A00525B02 /* Cocoa.framework */,
+				55787BE918D8832A00525B02 /* Other Frameworks */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		55787BE918D8832A00525B02 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				55787BEA18D8832A00525B02 /* AppKit.framework */,
+				55787BEB18D8832A00525B02 /* CoreData.framework */,
+				55787BEC18D8832A00525B02 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		55787BED18D8832A00525B02 /* GUI */ = {
+			isa = PBXGroup;
+			children = (
+				55787C2318D8B52000525B02 /* AppDelegate.h */,
+				55787C2418D8B52E00525B02 /* AppDelegate.m */,
+				55787C2718D8B56700525B02 /* MainMenu.xib */,
+				55787C2A18D8B56F00525B02 /* Images.xcassets */,
+				55787BEE18D8832A00525B02 /* Supporting Files */,
+			);
+			name = GUI;
+			path = "PIC16F84A Emulator";
+			sourceTree = "<group>";
+		};
+		55787BEE18D8832A00525B02 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				55787C2C18D8B58000525B02 /* PIC16F84A Emulator-Info.plist */,
+				55787C3218D8B5AB00525B02 /* InfoPlist.strings */,
+				55787C2F18D8B59100525B02 /* main.m */,
+				55787C3118D8B5A200525B02 /* PIC16F84A Emulator-Prefix.pch */,
+				55787C3518D8B5B000525B02 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		55787C1D18D8B16900525B02 /* tests */ = {
+			isa = PBXGroup;
+			children = (
+				55787C1E18D8B1BA00525B02 /* main.c */,
+				55787C1F18D8B1BA00525B02 /* tests.c */,
+				55787C2018D8B1BA00525B02 /* tests.h */,
+			);
+			name = tests;
+			path = "PIC16F84A emulator";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		55754FA3182403C4002FA225 /* PIC16F84A emulator */ = {
+		55754FA3182403C4002FA225 /* tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 55754FAD182403C4002FA225 /* Build configuration list for PBXNativeTarget "PIC16F84A emulator" */;
+			buildConfigurationList = 55754FAD182403C4002FA225 /* Build configuration list for PBXNativeTarget "tests" */;
 			buildPhases = (
 				55754FA0182403C4002FA225 /* Sources */,
 				55754FA1182403C4002FA225 /* Frameworks */,
-				55754FA2182403C4002FA225 /* CopyFiles */,
+				55754FA2182403C4002FA225 /* Copy Files */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "PIC16F84A emulator";
+			name = tests;
 			productName = "PIC16F84A emulator";
 			productReference = 55754FA4182403C4002FA225 /* PIC16F84A emulator */;
 			productType = "com.apple.product-type.tool";
+		};
+		55787BE518D8832A00525B02 /* PIC16F84A Emulator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55787C1218D8832B00525B02 /* Build configuration list for PBXNativeTarget "PIC16F84A Emulator" */;
+			buildPhases = (
+				55787BE218D8832A00525B02 /* Sources */,
+				55787BE318D8832A00525B02 /* Frameworks */,
+				55787BE418D8832A00525B02 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "PIC16F84A Emulator";
+			productName = "PIC16F84A Emulator";
+			productReference = 55787BE618D8832A00525B02 /* PIC16F84A Emulator.app */;
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
@@ -141,16 +241,33 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 55754F9B182403C4002FA225;
 			productRefGroup = 55754FA5182403C4002FA225 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				55754FA3182403C4002FA225 /* PIC16F84A emulator */,
+				55754FA3182403C4002FA225 /* tests */,
+				55787BE518D8832A00525B02 /* PIC16F84A Emulator */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		55787BE418D8832A00525B02 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55787C3718D8B5B000525B02 /* Credits.rtf in Resources */,
+				55787C2B18D8B56F00525B02 /* Images.xcassets in Resources */,
+				55787C3418D8B5AB00525B02 /* InfoPlist.strings in Resources */,
+				55787C2D18D8B58000525B02 /* PIC16F84A Emulator-Info.plist in Resources */,
+				55787C2918D8B56700525B02 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		55754FA0182403C4002FA225 /* Sources */ = {
@@ -159,15 +276,56 @@
 			files = (
 				55787BE018D879BF00525B02 /* runtime.c in Sources */,
 				55787BD318D86C4100525B02 /* utils.c in Sources */,
+				55787C2118D8B1BA00525B02 /* main.c in Sources */,
 				55787BDA18D86D7400525B02 /* load.c in Sources */,
+				55787C2218D8B1BA00525B02 /* tests.c in Sources */,
 				55787BDC18D86DA700525B02 /* symbols.c in Sources */,
-				55754FA8182403C4002FA225 /* main.c in Sources */,
-				55787BCA18D86AD000525B02 /* tests.c in Sources */,
 				55787BCD18D86B4800525B02 /* instructions.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		55787BE218D8832A00525B02 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55787C1A18D894AC00525B02 /* load.c in Sources */,
+				55787C1818D894A500525B02 /* runtime.c in Sources */,
+				55787C1C18D894B100525B02 /* instructions.c in Sources */,
+				55787C2618D8B53400525B02 /* AppDelegate.m in Sources */,
+				55787C1B18D894AE00525B02 /* utils.c in Sources */,
+				55787C3018D8B59100525B02 /* main.m in Sources */,
+				55787C1918D894A900525B02 /* symbols.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		55787C2718D8B56700525B02 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				55787C2818D8B56700525B02 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		55787C3218D8B5AB00525B02 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				55787C3318D8B5AB00525B02 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		55787C3518D8B5B000525B02 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				55787C3618D8B5B000525B02 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		55754FAB182403C4002FA225 /* Debug */ = {
@@ -252,6 +410,40 @@
 			};
 			name = Release;
 		};
+		55787C1318D8832B00525B02 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PIC16F84A Emulator/GUI/PIC16F84A Emulator-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "PIC16F84A Emulator/GUI/PIC16F84A Emulator-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		55787C1418D8832B00525B02 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PIC16F84A Emulator/GUI/PIC16F84A Emulator-Prefix.pch";
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "PIC16F84A Emulator/GUI/PIC16F84A Emulator-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -264,11 +456,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		55754FAD182403C4002FA225 /* Build configuration list for PBXNativeTarget "PIC16F84A emulator" */ = {
+		55754FAD182403C4002FA225 /* Build configuration list for PBXNativeTarget "tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				55754FAE182403C4002FA225 /* Debug */,
 				55754FAF182403C4002FA225 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		55787C1218D8832B00525B02 /* Build configuration list for PBXNativeTarget "PIC16F84A Emulator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55787C1318D8832B00525B02 /* Debug */,
+				55787C1418D8832B00525B02 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
