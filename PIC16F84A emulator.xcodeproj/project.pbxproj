@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		55754FA8182403C4002FA225 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 55754FA7182403C4002FA225 /* main.c */; };
+		55787BCA18D86AD000525B02 /* tests.c in Sources */ = {isa = PBXBuildFile; fileRef = 55787BC918D86AD000525B02 /* tests.c */; };
+		55787BCD18D86B4800525B02 /* instructions.c in Sources */ = {isa = PBXBuildFile; fileRef = 55787BCC18D86B4800525B02 /* instructions.c */; };
+		55787BD318D86C4100525B02 /* utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 55787BD218D86C4100525B02 /* utils.c */; };
+		55787BDA18D86D7400525B02 /* load.c in Sources */ = {isa = PBXBuildFile; fileRef = 55787BD918D86D7400525B02 /* load.c */; };
+		55787BDC18D86DA700525B02 /* symbols.c in Sources */ = {isa = PBXBuildFile; fileRef = 55787BDB18D86DA700525B02 /* symbols.c */; };
+		55787BE018D879BF00525B02 /* runtime.c in Sources */ = {isa = PBXBuildFile; fileRef = 55787BDF18D879BF00525B02 /* runtime.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,6 +32,20 @@
 		55754FA4182403C4002FA225 /* PIC16F84A emulator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "PIC16F84A emulator"; sourceTree = BUILT_PRODUCTS_DIR; };
 		55754FA7182403C4002FA225 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		55754FB618241B25002FA225 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		55787BC918D86AD000525B02 /* tests.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tests.c; sourceTree = "<group>"; };
+		55787BCC18D86B4800525B02 /* instructions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = instructions.c; sourceTree = "<group>"; };
+		55787BD018D86BA800525B02 /* state.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = state.h; sourceTree = "<group>"; };
+		55787BD118D86BE700525B02 /* instructions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = instructions.h; sourceTree = "<group>"; };
+		55787BD218D86C4100525B02 /* utils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = utils.c; sourceTree = "<group>"; };
+		55787BD618D86C6F00525B02 /* constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
+		55787BD718D86C9E00525B02 /* utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
+		55787BD818D86D2400525B02 /* tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tests.h; sourceTree = "<group>"; };
+		55787BD918D86D7400525B02 /* load.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = load.c; sourceTree = "<group>"; };
+		55787BDB18D86DA700525B02 /* symbols.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = symbols.c; sourceTree = "<group>"; };
+		55787BDD18D86DB100525B02 /* symbols.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = symbols.h; sourceTree = "<group>"; };
+		55787BDE18D86E4000525B02 /* load.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = load.h; sourceTree = "<group>"; };
+		55787BDF18D879BF00525B02 /* runtime.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = runtime.c; sourceTree = "<group>"; };
+		55787BE118D879C500525B02 /* runtime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = runtime.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +80,20 @@
 			isa = PBXGroup;
 			children = (
 				55754FA7182403C4002FA225 /* main.c */,
+				55787BE118D879C500525B02 /* runtime.h */,
+				55787BDF18D879BF00525B02 /* runtime.c */,
+				55787BDD18D86DB100525B02 /* symbols.h */,
+				55787BDB18D86DA700525B02 /* symbols.c */,
+				55787BDE18D86E4000525B02 /* load.h */,
+				55787BD918D86D7400525B02 /* load.c */,
+				55787BD718D86C9E00525B02 /* utils.h */,
+				55787BD218D86C4100525B02 /* utils.c */,
+				55787BD018D86BA800525B02 /* state.h */,
+				55787BD118D86BE700525B02 /* instructions.h */,
+				55787BCC18D86B4800525B02 /* instructions.c */,
+				55787BD618D86C6F00525B02 /* constants.h */,
+				55787BD818D86D2400525B02 /* tests.h */,
+				55787BC918D86AD000525B02 /* tests.c */,
 			);
 			path = "PIC16F84A emulator";
 			sourceTree = "<group>";
@@ -123,7 +157,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55787BE018D879BF00525B02 /* runtime.c in Sources */,
+				55787BD318D86C4100525B02 /* utils.c in Sources */,
+				55787BDA18D86D7400525B02 /* load.c in Sources */,
+				55787BDC18D86DA700525B02 /* symbols.c in Sources */,
 				55754FA8182403C4002FA225 /* main.c in Sources */,
+				55787BCA18D86AD000525B02 /* tests.c in Sources */,
+				55787BCD18D86B4800525B02 /* instructions.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
