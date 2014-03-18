@@ -85,7 +85,7 @@ void test_delay(void) {
 void (*tests[])(void) = {test_bit_pattern, test_toggle_bit, test_delay};
 
 void test(void) {
-	for(int i = 0; i < ONESIZE(tests); i++) {
+	for(int i = 0; i < LENGTH(tests); i++) {
 		tests[i]();
 		
 		reset();

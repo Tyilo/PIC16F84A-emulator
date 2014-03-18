@@ -11,7 +11,7 @@
 
 #include <stdint.h>
 
-#define ONESIZE(x) (sizeof(x) / sizeof(x[0]))
+#define LENGTH(x) (sizeof(x) / sizeof(x[0]))
 
 uint8_t get_real_address(uint8_t address);
 uint8_t read_ram(uint8_t address);

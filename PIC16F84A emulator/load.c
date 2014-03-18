@@ -64,7 +64,7 @@ void load_hex(char *path) {
 		}
 		
 		uint64_t max_address = (address + data_len) / 2;
-		if(max_address > ONESIZE(prog_mem)) {
+		if(max_address > LENGTH(prog_mem)) {
 			printf("WARNING: Ignored hex field with address 0x%llx\n", max_address);
 			continue;
 		}
