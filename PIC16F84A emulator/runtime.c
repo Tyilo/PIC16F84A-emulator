@@ -16,7 +16,7 @@
 #include "constants.h"
 #include "instructions.h"
 
-char *breakpoints[] = {"start"};
+char *breakpoints[] = {};
 uint16_t breakpoint_addresses[LENGTH(breakpoints)];
 
 void bp_handler(void) {
