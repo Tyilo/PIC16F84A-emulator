@@ -43,7 +43,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		55754FA4182403C4002FA225 /* PIC16F84A emulator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "PIC16F84A emulator"; sourceTree = BUILT_PRODUCTS_DIR; };
+		55754FA4182403C4002FA225 /* PIC16F84A emulator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = "PIC16F84A emulator"; path = tests; sourceTree = BUILT_PRODUCTS_DIR; };
 		55787BCC18D86B4800525B02 /* instructions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = instructions.c; sourceTree = "<group>"; };
 		55787BD018D86BA800525B02 /* state.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = state.h; sourceTree = "<group>"; };
 		55787BD118D86BE700525B02 /* instructions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = instructions.h; sourceTree = "<group>"; };
@@ -182,8 +182,8 @@
 			isa = PBXGroup;
 			children = (
 				55787C1E18D8B1BA00525B02 /* main.c */,
-				55787C1F18D8B1BA00525B02 /* tests.c */,
 				55787C2018D8B1BA00525B02 /* tests.h */,
+				55787C1F18D8B1BA00525B02 /* tests.c */,
 			);
 			name = tests;
 			path = "PIC16F84A emulator";
