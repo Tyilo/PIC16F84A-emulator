@@ -13,8 +13,27 @@
 #include "state.h"
 #include "runtime.h"
 
+#define BYTETOBINARYPATTERN "%d%d%d%d%d%d%d%d"
+#define BYTETOBINARY(byte)  \
+(byte & 0x80 ? 1 : 0), \
+(byte & 0x40 ? 1 : 0), \
+(byte & 0x20 ? 1 : 0), \
+(byte & 0x10 ? 1 : 0), \
+(byte & 0x08 ? 1 : 0), \
+(byte & 0x04 ? 1 : 0), \
+(byte & 0x02 ? 1 : 0), \
+(byte & 0x01 ? 1 : 0)
+
 NSNumber *NSNumberFromString(NSString *str) {
-	return @(strtoll([str UTF8String], NULL, 0));
+	str = [str stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+	
+	int base = 0;
+	
+	if([str hasPrefix:@"0b"]) {
+		str = [str substringFromIndex:2];
+		base = 2;
+	}
+	return @(strtoll([str UTF8String], NULL, base));
 }
 
 @implementation AppDelegate
@@ -164,7 +183,7 @@ NSNumber *NSNumberFromString(NSString *str) {
 			array = self.variableAddresses;
 		} else if([headerTitle isEqualToString:@"Variable"]) {
 			array = self.variables;
-		} else if([headerTitle isEqualToString:@"Input Value"]) {
+		} else if(aTableView == self.variableInputTable) {
 			array = self.variableInputValues;
 		} else {
 			array = self.variableOutputValues;
@@ -178,7 +197,17 @@ NSNumber *NSNumberFromString(NSString *str) {
 	} else if([element isKindOfClass:[NSNull class]]) {
 		return @"?";
 	} else if([element isKindOfClass:[NSNumber class]]) {
-		return [NSString stringWithFormat:@"0x%X", [element unsignedIntValue]];
+		if([headerTitle isEqualToString:@"Binary"]) {
+			return [NSString stringWithFormat:@"0b" BYTETOBINARYPATTERN, BYTETOBINARY([element unsignedIntValue])];
+		}
+		
+		NSString *format;
+		if([headerTitle isEqualToString:@"Decimal"]) {
+			format = @"%d";
+		} else {
+			format = @"0x%X";
+		}
+		return [NSString stringWithFormat:format, [element unsignedIntValue]];
 	} else {
 		return nil;
 	}
