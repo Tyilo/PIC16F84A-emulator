@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 #include "disassemble.h"
 #include "utils.h"
@@ -32,7 +33,7 @@ instruction_def *ins_def_from_ins(instruction *ins) {
 	return NULL;
 }
 
-const char *instruction_name(instruction_def *def) {
+char *instruction_name(instruction_def *def) {
 	Dl_info info;
 	dladdr(def->implementation, &info);
 	
@@ -42,7 +43,15 @@ const char *instruction_name(instruction_def *def) {
 		name = name + 1;
 	}
 	
-	return name;
+	size_t name_len = strlen(name);
+	char *upper_name = malloc(name_len + 1);
+	upper_name[name_len] = '\0';
+	
+	for(int i = 0; i < name_len; i++) {
+		upper_name[i] = toupper(name[i]);
+	}
+	
+	return upper_name;
 }
 
 char *disassemble_instruction(instruction *ins) {
@@ -60,9 +69,14 @@ char *disassemble_instruction(instruction *ins) {
 			arg1 = ins->vars_LW.k;
 			break;
 		case WF:
-			format = "%s 0x%x, %c";
-			arg1 = ins->vars_WF.f;
-			arg2 = ins->vars_WF.d? 'W': 'F';
+			if(strcmp(name, "CLRF") == 0) {
+				format = "%s 0x%x";
+				arg1 = ins->vars_WF.f;
+			} else {
+				format = "%s 0x%x, %c";
+				arg1 = ins->vars_WF.f;
+				arg2 = ins->vars_WF.d? 'W': 'F';
+			}
 			break;
 		case B:
 			format = "%s 0x%x, %d";
@@ -92,7 +106,7 @@ char *disassemble_program(void) {
 	for(i = LENGTH(prog_mem) - 1; i >= 0; i--) {
 		instruction *ins = (instruction *)&prog_mem[i];
 		instruction_def *def = ins_def_from_ins(ins);
-		if(strcmp(instruction_name(def), "nop") != 0) {
+		if(strcmp(instruction_name(def), "NOP") != 0) {
 			break;
 		}
 	}

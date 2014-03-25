@@ -7,6 +7,9 @@
 //
 
 #include "instructions.h"
+
+#include <stdio.h>
+
 #include "state.h"
 #include "utils.h"
 
@@ -377,6 +380,22 @@ void retlw(instruction *ins) {
 	_return(ins);
 }
 
+void unimplemented(const char *name) {
+	printf("WARNING: %s instruction is not implemented. Doing nothing!", name);
+}
+
+void retfie(instruction *ins) {
+	unimplemented("retfie");
+}
+
+void clrwdt(instruction *ins) {
+	unimplemented("clrwdt");
+}
+
+void _sleep(instruction *ins) {
+	unimplemented("sleep");
+}
+
 instruction_def instructions[] = {
 	{"11111", LW, addlw},
 	{"000111", WF, addwf},
@@ -414,7 +433,7 @@ instruction_def instructions[] = {
 	{"00000000001000", NO_ARGS, _return},
 	{"1101", LW, retlw},
 	// Not implemented:
-	{"00000000001001", NO_ARGS, /* retfie */ nop},
-	{"00000001100100", NO_ARGS, /* clrwdt */ nop},
-	{"00000001100011", NO_ARGS, /* sleep */ nop}
+	{"00000000001001", NO_ARGS, /* retfie */ retfie},
+	{"00000001100100", NO_ARGS, /* clrwdt */ clrwdt},
+	{"00000001100011", NO_ARGS, /* sleep */ _sleep}
 };
