@@ -65,36 +65,55 @@ char *disassemble_instruction(instruction *ins) {
 	
 	switch(def->type) {
 		case LW:
-			format = "%s 0x%x";
+			format = " 0x%X";
 			arg1 = ins->vars_LW.k;
 			break;
 		case WF:
 			if(strcmp(name, "CLRF") == 0) {
-				format = "%s 0x%x";
+				format = " 0x%X";
 				arg1 = ins->vars_WF.f;
 			} else {
-				format = "%s 0x%x, %c";
+				format = " 0x%X, %c";
 				arg1 = ins->vars_WF.f;
 				arg2 = (ins->vars_WF.d == 0)? 'W': 'F';
 			}
 			break;
 		case B:
-			format = "%s 0x%x, %d";
+			format = " 0x%X, %d";
 			arg1 = ins->vars_B.f;
 			arg2 = ins->vars_B.b;
 			break;
 		case GOTO_CALL:
-			format = "%s 0x%x";
+			format = " 0x%X";
 			arg1 = ins->vars_GOTO_CALL.k;
 			break;
 		case NO_ARGS:
-			format = "%s";
+			format = "";
 			break;
+	}
+	
+	char *new_format;
+	
+	if(format[0] == '\0') {
+		new_format = "%s";
+	} else {
+		size_t format_len = strlen(format);
+		const char *format_prefix = "%-8s";
+		size_t format_prefix_len = strlen(format_prefix);
+		size_t total_len = format_prefix_len + format_len;
+		new_format = malloc(total_len + 1);
+		new_format[total_len] = '\0';
+		memcpy(new_format, format_prefix, format_prefix_len);
+		memcpy(new_format + format_prefix_len, format, format_len);
 	}
 	
 	char *str;
 	
-	asprintf(&str, format, name, arg1, arg2);
+	asprintf(&str, new_format, name, arg1, arg2);
+	
+	if(format[0] != '\0') {
+		free(new_format);
+	}
 	
 	return str;
 }
@@ -118,7 +137,7 @@ char *disassemble_program(void) {
 		char *line = disassemble_instruction(ins);
 		
 		char *old_disassembly = disassembly;
-		asprintf(&disassembly, "%s0x%03x\t%s\n", old_disassembly, i, line);
+		asprintf(&disassembly, "%s0x%03X  %s\n", old_disassembly, i, line);
 		if(i > 0) {
 			free(old_disassembly);
 		}
