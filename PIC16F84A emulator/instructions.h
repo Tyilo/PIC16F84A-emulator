@@ -45,7 +45,14 @@ typedef union {
 
 typedef struct {
 	char *prefix;
-	void (*implementation)(instruction);
+	enum {
+		LW,
+		WF,
+		B,
+		GOTO_CALL,
+		NO_ARGS
+	} type;
+	void (*implementation)(instruction *);
 } instruction_def;
 
 extern instruction_def instructions[38];

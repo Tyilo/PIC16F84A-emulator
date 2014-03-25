@@ -15,6 +15,10 @@
 #include "state.h"
 #include "constants.h"
 #include "instructions.h"
+#include "disassemble.h"
+
+#include <dlfcn.h>
+#include <assert.h>
 
 char *breakpoints[] = {};
 uint16_t breakpoint_addresses[LENGTH(breakpoints)];
@@ -53,23 +57,17 @@ void run(void) {
 			}
 		}
 		
-		instruction ins = (instruction)prog_mem[PC];
+		instruction *ins = (instruction *)&prog_mem[PC];
 		char ins_string[14];
 		for(int i = 0; i < sizeof(ins_string); i++) {
-			ins_string[i] = '0' + ((ins.opcode >> (13 - i)) & 0x1); //((ins.opcode & (0x1 << (13 - i))) >> (13 - i));
+			ins_string[i] = '0' + ((ins->opcode >> (13 - i)) & 0x1); //((ins.opcode & (0x1 << (13 - i))) >> (13 - i));
 		}
-		for(int i = 0; i < LENGTH(instructions); i++) {
-			instruction_def def = instructions[i];
-			if(strncmp(ins_string, def.prefix, strlen(def.prefix)) == 0) {
-				/*Dl_info info;
-				 dladdr(def.implementation, &info);
-				 
-				 printf("%s\n", info.dli_sname);*/
-				
-				def.implementation(ins);
-				break;
-			}
-		}
+		
+		instruction_def *def = ins_def_from_ins(ins);
+		assert(def);
+		
+		def->implementation(ins);
+		
 		PC++;
 		cycle_counter++;
 		

@@ -10,8 +10,8 @@
 #include "state.h"
 #include "utils.h"
 
-void addlw(instruction ins) {
-	uint8_t k = ins.vars_LW.k;
+void addlw(instruction *ins) {
+	uint8_t k = ins->vars_LW.k;
 	uint8_t value = k + W;
 	
 	status->C = value < W;
@@ -21,9 +21,9 @@ void addlw(instruction ins) {
 	W = value;
 }
 
-void addwf(instruction ins) {
-	uint8_t d = ins.vars_WF.d;
-	uint8_t f = ins.vars_WF.f;
+void addwf(instruction *ins) {
+	uint8_t d = ins->vars_WF.d;
+	uint8_t f = ins->vars_WF.f;
 	
 	uint8_t value = read_ram(f) + W;
 	
@@ -38,8 +38,8 @@ void addwf(instruction ins) {
 	}
 }
 
-void andlw(instruction ins) {
-	uint8_t k = ins.vars_LW.k;
+void andlw(instruction *ins) {
+	uint8_t k = ins->vars_LW.k;
 	uint8_t value = k & W;
 	
 	status->Z = value == 0;
@@ -47,9 +47,9 @@ void andlw(instruction ins) {
 	W = value;
 }
 
-void andwf(instruction ins) {
-	uint8_t d = ins.vars_WF.d;
-	uint8_t f = ins.vars_WF.f;
+void andwf(instruction *ins) {
+	uint8_t d = ins->vars_WF.d;
+	uint8_t f = ins->vars_WF.f;
 	
 	uint8_t value = read_ram(f) & W;
 	
@@ -62,8 +62,8 @@ void andwf(instruction ins) {
 	}
 }
 
-void iorlw(instruction ins) {
-	uint8_t k = ins.vars_LW.k;
+void iorlw(instruction *ins) {
+	uint8_t k = ins->vars_LW.k;
 	uint8_t value = k | W;
 	
 	status->Z = value == 0;
@@ -71,9 +71,9 @@ void iorlw(instruction ins) {
 	W = value;
 }
 
-void iorwf(instruction ins) {
-	uint8_t d = ins.vars_WF.d;
-	uint8_t f = ins.vars_WF.f;
+void iorwf(instruction *ins) {
+	uint8_t d = ins->vars_WF.d;
+	uint8_t f = ins->vars_WF.f;
 	
 	uint8_t value = read_ram(f) | W;
 	
@@ -86,8 +86,8 @@ void iorwf(instruction ins) {
 	}
 }
 
-void sublw(instruction ins) {
-	uint8_t k = ins.vars_LW.k;
+void sublw(instruction *ins) {
+	uint8_t k = ins->vars_LW.k;
 	uint8_t value = k - W;
 	
 	status->C = value > k;
@@ -97,9 +97,9 @@ void sublw(instruction ins) {
 	W = value;
 }
 
-void subwf(instruction ins) {
-	uint8_t d = ins.vars_WF.d;
-	uint8_t f = ins.vars_WF.f;
+void subwf(instruction *ins) {
+	uint8_t d = ins->vars_WF.d;
+	uint8_t f = ins->vars_WF.f;
 	
 	uint8_t f_value = read_ram(f);
 	uint8_t value = f_value - W;
@@ -115,8 +115,8 @@ void subwf(instruction ins) {
 	}
 }
 
-void xorlw(instruction ins) {
-	uint8_t k = ins.vars_LW.k;
+void xorlw(instruction *ins) {
+	uint8_t k = ins->vars_LW.k;
 	uint8_t value = W ^ k;
 	
 	status->Z = value == 0;
@@ -124,9 +124,9 @@ void xorlw(instruction ins) {
 	W = value;
 }
 
-void xorwf(instruction ins) {
-	uint8_t d = ins.vars_WF.d;
-	uint8_t f = ins.vars_WF.f;
+void xorwf(instruction *ins) {
+	uint8_t d = ins->vars_WF.d;
+	uint8_t f = ins->vars_WF.f;
 	
 	uint8_t value = W ^ read_ram(f);
 	
@@ -139,9 +139,9 @@ void xorwf(instruction ins) {
 	}
 }
 
-void swapf(instruction ins) {
-	uint8_t d = ins.vars_WF.d;
-	uint8_t f = ins.vars_WF.f;
+void swapf(instruction *ins) {
+	uint8_t d = ins->vars_WF.d;
+	uint8_t f = ins->vars_WF.f;
 	
 	uint8_t f_value = read_ram(f);
 	uint8_t value = (f_value << 4) | (f_value >> 4);
@@ -153,9 +153,9 @@ void swapf(instruction ins) {
 	}
 }
 
-void movf(instruction ins) {
-	uint8_t d = ins.vars_WF.d;
-	uint8_t f = ins.vars_WF.f;
+void movf(instruction *ins) {
+	uint8_t d = ins->vars_WF.d;
+	uint8_t f = ins->vars_WF.f;
 	
 	uint8_t value = read_ram(f);
 	
@@ -168,35 +168,35 @@ void movf(instruction ins) {
 	}
 }
 
-void movlw(instruction ins) {
-	uint8_t k = ins.vars_LW.k;
+void movlw(instruction *ins) {
+	uint8_t k = ins->vars_LW.k;
 	
 	W = k;
 }
 
-void movwf(instruction ins) {
-	uint8_t f = ins.vars_WF.f;
+void movwf(instruction *ins) {
+	uint8_t f = ins->vars_WF.f;
 	
 	write_ram(f, W);
 }
 
-void clrf(instruction ins) {
-	uint8_t f = ins.vars_WF.f;
+void clrf(instruction *ins) {
+	uint8_t f = ins->vars_WF.f;
 	
 	status->Z = 1;
 	
 	write_ram(f, 0);
 }
 
-void clrw(instruction ins) {
+void clrw(instruction *ins) {
 	status->Z = 1;
 	
 	W = 0;
 }
 
-void comf(instruction ins) {
-	uint8_t d = ins.vars_WF.d;
-	uint8_t f = ins.vars_WF.f;
+void comf(instruction *ins) {
+	uint8_t d = ins->vars_WF.d;
+	uint8_t f = ins->vars_WF.f;
 	
 	uint8_t value = read_ram(f) ^ 0xFF;
 	
@@ -209,9 +209,9 @@ void comf(instruction ins) {
 	}
 }
 
-void decf(instruction ins) {
-	uint8_t d = ins.vars_WF.d;
-	uint8_t f = ins.vars_WF.f;
+void decf(instruction *ins) {
+	uint8_t d = ins->vars_WF.d;
+	uint8_t f = ins->vars_WF.f;
 	
 	uint8_t value = read_ram(f) - 1;
 	
@@ -224,9 +224,9 @@ void decf(instruction ins) {
 	}
 }
 
-void decfsz(instruction ins) {
-	uint8_t d = ins.vars_WF.d;
-	uint8_t f = ins.vars_WF.f;
+void decfsz(instruction *ins) {
+	uint8_t d = ins->vars_WF.d;
+	uint8_t f = ins->vars_WF.f;
 	
 	uint8_t value = read_ram(f) - 1;
 	
@@ -242,9 +242,9 @@ void decfsz(instruction ins) {
 	}
 }
 
-void incf(instruction ins) {
-	uint8_t d = ins.vars_WF.d;
-	uint8_t f = ins.vars_WF.f;
+void incf(instruction *ins) {
+	uint8_t d = ins->vars_WF.d;
+	uint8_t f = ins->vars_WF.f;
 	
 	uint8_t value = read_ram(f) + 1;
 	
@@ -257,9 +257,9 @@ void incf(instruction ins) {
 	}
 }
 
-void incfsz(instruction ins) {
-	uint8_t d = ins.vars_WF.d;
-	uint8_t f = ins.vars_WF.f;
+void incfsz(instruction *ins) {
+	uint8_t d = ins->vars_WF.d;
+	uint8_t f = ins->vars_WF.f;
 	
 	uint8_t value = read_ram(f) + 1;
 	
@@ -275,9 +275,9 @@ void incfsz(instruction ins) {
 	}
 }
 
-void rlf(instruction ins) {
-	uint8_t d = ins.vars_WF.d;
-	uint8_t f = ins.vars_WF.f;
+void rlf(instruction *ins) {
+	uint8_t d = ins->vars_WF.d;
+	uint8_t f = ins->vars_WF.f;
 	
 	uint8_t f_value = read_ram(f);
 	uint8_t value = (f_value << 1) | status->C;
@@ -291,9 +291,9 @@ void rlf(instruction ins) {
 	}
 }
 
-void rrf(instruction ins) {
-	uint8_t d = ins.vars_WF.d;
-	uint8_t f = ins.vars_WF.f;
+void rrf(instruction *ins) {
+	uint8_t d = ins->vars_WF.d;
+	uint8_t f = ins->vars_WF.f;
 	
 	uint8_t f_value = read_ram(f);
 	uint8_t value = (f_value >> 1) | (status->C << 0x7);
@@ -307,25 +307,25 @@ void rrf(instruction ins) {
 	}
 }
 
-void bcf(instruction ins) {
-	uint8_t b = ins.vars_B.b;
-	uint8_t f = ins.vars_B.f;
+void bcf(instruction *ins) {
+	uint8_t b = ins->vars_B.b;
+	uint8_t f = ins->vars_B.f;
 	
 	uint8_t value = read_ram(f) & ((0x1 << b) ^ 0xFF);
 	write_ram(f, value);
 }
 
-void bsf(instruction ins) {
-	uint8_t b = ins.vars_B.b;
-	uint8_t f = ins.vars_B.f;
+void bsf(instruction *ins) {
+	uint8_t b = ins->vars_B.b;
+	uint8_t f = ins->vars_B.f;
 	
 	uint8_t value = read_ram(f) | (0x1 << b);
 	write_ram(f, value);
 }
 
-void btfsc(instruction ins) {
-	uint8_t b = ins.vars_B.b;
-	uint8_t f = ins.vars_B.f;
+void btfsc(instruction *ins) {
+	uint8_t b = ins->vars_B.b;
+	uint8_t f = ins->vars_B.f;
 	
 	uint8_t value = (read_ram(f) & (0x1 << b)) >> b;
 	if(value == 0) {
@@ -334,9 +334,9 @@ void btfsc(instruction ins) {
 	}
 }
 
-void btfss(instruction ins) {
-	uint8_t b = ins.vars_B.b;
-	uint8_t f = ins.vars_B.f;
+void btfss(instruction *ins) {
+	uint8_t b = ins->vars_B.b;
+	uint8_t f = ins->vars_B.f;
 	
 	uint8_t value = (read_ram(f) & (0x1 << b)) >> b;
 	if(value == 1) {
@@ -345,76 +345,76 @@ void btfss(instruction ins) {
 	}
 }
 
-void nop(instruction ins) {
+void nop(instruction *ins) {
 	// Noppity nop nop
 }
 
-void _goto(instruction ins) {
-	uint16_t k = ins.vars_GOTO_CALL.k;
+void _goto(instruction *ins) {
+	uint16_t k = ins->vars_GOTO_CALL.k;
 	PC = k - 1;
 	cycle_counter++;
 }
 
-void call(instruction ins) {
-	uint16_t k = ins.vars_GOTO_CALL.k;
+void call(instruction *ins) {
+	uint16_t k = ins->vars_GOTO_CALL.k;
 	stack_pointer--;
 	*stack_pointer = PC + 1;
 	PC = k;
 	cycle_counter++;
 }
 
-void _return(instruction ins) {
+void _return(instruction *ins) {
 	// -1 Required because of implementation
 	PC = *stack_pointer - 1;
 	stack_pointer++;
 	cycle_counter++;
 }
 
-void retlw(instruction ins) {
-	uint8_t k = ins.vars_LW.k;
+void retlw(instruction *ins) {
+	uint8_t k = ins->vars_LW.k;
 	
 	W = k;
 	_return(ins);
 }
 
 instruction_def instructions[] = {
-	{"11111", addlw},
-	{"000111", addwf},
-	{"111001", andlw},
-	{"000101", andwf},
-	{"111000", iorlw},
-	{"000100", iorwf},
-	{"11110", sublw},
-	{"000010", subwf},
-	{"111010", xorlw},
-	{"000110", xorwf},
-	{"001110", swapf},
-	{"001000", movf},
-	{"1100", movlw},
-	{"0000001", movwf},
-	{"0000011", clrf},
-	{"0000010", clrw},
-	{"001001", comf},
-	{"000011", decf},
-	{"001011", decfsz},
-	{"001010", incf},
-	{"001111", incfsz},
-	{"001101", rlf},
-	{"001100", rrf},
-	{"0100", bcf},
-	{"0101", bsf},
-	{"0110", btfsc},
-	{"0111", btfss},
-	{"00000000000000", nop},
-	{"00000000100000", nop},
-	{"00000001000000", nop},
-	{"00000001100000", nop},
-	{"101", _goto},
-	{"100", call},
-	{"00000000001000", _return},
-	{"1101", retlw},
+	{"11111", LW, addlw},
+	{"000111", WF, addwf},
+	{"111001", LW, andlw},
+	{"000101", WF, andwf},
+	{"111000", LW, iorlw},
+	{"000100", WF, iorwf},
+	{"11110", LW, sublw},
+	{"000010", WF, subwf},
+	{"111010", LW, xorlw},
+	{"000110", WF, xorwf},
+	{"001110", WF, swapf},
+	{"001000", WF, movf},
+	{"1100", LW, movlw},
+	{"0000001", WF, movwf},
+	{"0000011", WF, clrf},
+	{"0000010", NO_ARGS, clrw},
+	{"001001", WF, comf},
+	{"000011", WF, decf},
+	{"001011", WF, decfsz},
+	{"001010", WF, incf},
+	{"001111", WF, incfsz},
+	{"001101", WF, rlf},
+	{"001100", WF, rrf},
+	{"0100", B, bcf},
+	{"0101", B, bsf},
+	{"0110", B, btfsc},
+	{"0111", B, btfss},
+	{"00000000000000", NO_ARGS, nop},
+	{"00000000100000", NO_ARGS, nop},
+	{"00000001000000", NO_ARGS, nop},
+	{"00000001100000", NO_ARGS, nop},
+	{"101", GOTO_CALL, _goto},
+	{"100", GOTO_CALL, call},
+	{"00000000001000", NO_ARGS, _return},
+	{"1101", LW, retlw},
 	// Not implemented:
-	{"00000000001001", /* retfie */ nop},
-	{"00000001100100", /* clrwdt */ nop},
-	{"00000001100011", /* sleep */ nop}
+	{"00000000001001", NO_ARGS, /* retfie */ nop},
+	{"00000001100100", NO_ARGS, /* clrwdt */ nop},
+	{"00000001100011", NO_ARGS, /* sleep */ nop}
 };

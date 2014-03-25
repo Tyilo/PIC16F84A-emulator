@@ -15,6 +15,8 @@
 #include "state.h"
 #include "symbols.h"
 #include "utils.h"
+#include "runtime.h"
+#include "disassemble.h"
 
 void test_toggle_bit(void) {
 	uint16_t toggle_bit = prog_address("toggle_bit");
@@ -85,6 +87,12 @@ void test_delay(void) {
 void (*tests[])(void) = {test_bit_pattern, test_toggle_bit, test_delay};
 
 void test(void) {
+	printf("%s", disassemble_program());
+	
+	reset();
+	
+	run();
+	
 	for(int i = 0; i < LENGTH(tests); i++) {
 		tests[i]();
 		

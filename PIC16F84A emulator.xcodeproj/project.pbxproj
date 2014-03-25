@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		550E82D718E20BB4001ADCA4 /* disassemble.c in Sources */ = {isa = PBXBuildFile; fileRef = 550E82D618E20BB4001ADCA4 /* disassemble.c */; };
+		550E82D918E212A0001ADCA4 /* disassemble.c in Sources */ = {isa = PBXBuildFile; fileRef = 550E82D618E20BB4001ADCA4 /* disassemble.c */; };
+		550E82E918E2192E001ADCA4 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 550E82E818E2192E001ADCA4 /* main.c */; };
+		550E82EA18E21A2E001ADCA4 /* disassemble.c in Sources */ = {isa = PBXBuildFile; fileRef = 550E82D618E20BB4001ADCA4 /* disassemble.c */; };
+		550E82EB18E21A34001ADCA4 /* load.c in Sources */ = {isa = PBXBuildFile; fileRef = 55787BD918D86D7400525B02 /* load.c */; };
+		550E82EC18E21A46001ADCA4 /* instructions.c in Sources */ = {isa = PBXBuildFile; fileRef = 55787BCC18D86B4800525B02 /* instructions.c */; };
+		550E82ED18E21A52001ADCA4 /* utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 55787BD218D86C4100525B02 /* utils.c */; };
 		55787BCD18D86B4800525B02 /* instructions.c in Sources */ = {isa = PBXBuildFile; fileRef = 55787BCC18D86B4800525B02 /* instructions.c */; };
 		55787BD318D86C4100525B02 /* utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 55787BD218D86C4100525B02 /* utils.c */; };
 		55787BDA18D86D7400525B02 /* load.c in Sources */ = {isa = PBXBuildFile; fileRef = 55787BD918D86D7400525B02 /* load.c */; };
@@ -30,6 +37,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		550E82DC18E218FB001ADCA4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		55754FA2182403C4002FA225 /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -43,6 +59,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		550E82D618E20BB4001ADCA4 /* disassemble.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = disassemble.c; sourceTree = "<group>"; };
+		550E82D818E20BBE001ADCA4 /* disassemble.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = disassemble.h; sourceTree = "<group>"; };
+		550E82DE18E218FB001ADCA4 /* hex_disasm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = hex_disasm; sourceTree = BUILT_PRODUCTS_DIR; };
+		550E82E818E2192E001ADCA4 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		55754FA4182403C4002FA225 /* PIC16F84A emulator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = "PIC16F84A emulator"; path = tests; sourceTree = BUILT_PRODUCTS_DIR; };
 		55787BCC18D86B4800525B02 /* instructions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = instructions.c; sourceTree = "<group>"; };
 		55787BD018D86BA800525B02 /* state.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = state.h; sourceTree = "<group>"; };
@@ -76,6 +96,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		550E82DB18E218FB001ADCA4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55754FA1182403C4002FA225 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -94,11 +121,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		550E82E718E2192E001ADCA4 /* hex_disasm */ = {
+			isa = PBXGroup;
+			children = (
+				550E82E818E2192E001ADCA4 /* main.c */,
+			);
+			name = hex_disasm;
+			path = "PIC16F84A emulator/hex_disasm";
+			sourceTree = "<group>";
+		};
 		55754F9B182403C4002FA225 = {
 			isa = PBXGroup;
 			children = (
 				55754FA6182403C4002FA225 /* emulator */,
 				55787C1D18D8B16900525B02 /* tests */,
+				550E82E718E2192E001ADCA4 /* hex_disasm */,
 				55787BED18D8832A00525B02 /* GUI */,
 				55754FB518241B25002FA225 /* Frameworks */,
 				55754FA5182403C4002FA225 /* Products */,
@@ -110,6 +147,7 @@
 			children = (
 				55754FA4182403C4002FA225 /* PIC16F84A emulator */,
 				55787BE618D8832A00525B02 /* PIC16F84A Emulator.app */,
+				550E82DE18E218FB001ADCA4 /* hex_disasm */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -128,6 +166,8 @@
 				55787BD018D86BA800525B02 /* state.h */,
 				55787BD118D86BE700525B02 /* instructions.h */,
 				55787BCC18D86B4800525B02 /* instructions.c */,
+				550E82D818E20BBE001ADCA4 /* disassemble.h */,
+				550E82D618E20BB4001ADCA4 /* disassemble.c */,
 				55787BD618D86C6F00525B02 /* constants.h */,
 			);
 			name = emulator;
@@ -192,6 +232,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		550E82DD18E218FB001ADCA4 /* hex_disasm */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 550E82E418E218FB001ADCA4 /* Build configuration list for PBXNativeTarget "hex_disasm" */;
+			buildPhases = (
+				550E82DA18E218FB001ADCA4 /* Sources */,
+				550E82DB18E218FB001ADCA4 /* Frameworks */,
+				550E82DC18E218FB001ADCA4 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = hex_disasm;
+			productName = hex_disasm;
+			productReference = 550E82DE18E218FB001ADCA4 /* hex_disasm */;
+			productType = "com.apple.product-type.tool";
+		};
 		55754FA3182403C4002FA225 /* tests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 55754FAD182403C4002FA225 /* Build configuration list for PBXNativeTarget "tests" */;
@@ -250,6 +307,7 @@
 			targets = (
 				55754FA3182403C4002FA225 /* tests */,
 				55787BE518D8832A00525B02 /* PIC16F84A Emulator */,
+				550E82DD18E218FB001ADCA4 /* hex_disasm */,
 			);
 		};
 /* End PBXProject section */
@@ -270,12 +328,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		550E82DA18E218FB001ADCA4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				550E82ED18E21A52001ADCA4 /* utils.c in Sources */,
+				550E82EC18E21A46001ADCA4 /* instructions.c in Sources */,
+				550E82EA18E21A2E001ADCA4 /* disassemble.c in Sources */,
+				550E82EB18E21A34001ADCA4 /* load.c in Sources */,
+				550E82E918E2192E001ADCA4 /* main.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55754FA0182403C4002FA225 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				55787BE018D879BF00525B02 /* runtime.c in Sources */,
 				55787BD318D86C4100525B02 /* utils.c in Sources */,
+				550E82D718E20BB4001ADCA4 /* disassemble.c in Sources */,
 				55787C2118D8B1BA00525B02 /* main.c in Sources */,
 				55787BDA18D86D7400525B02 /* load.c in Sources */,
 				55787C2218D8B1BA00525B02 /* tests.c in Sources */,
@@ -290,6 +361,7 @@
 			files = (
 				55787C1A18D894AC00525B02 /* load.c in Sources */,
 				55787C1818D894A500525B02 /* runtime.c in Sources */,
+				550E82D918E212A0001ADCA4 /* disassemble.c in Sources */,
 				55787C1C18D894B100525B02 /* instructions.c in Sources */,
 				55787C2618D8B53400525B02 /* AppDelegate.m in Sources */,
 				55787C1B18D894AE00525B02 /* utils.c in Sources */,
@@ -328,6 +400,28 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		550E82E518E218FB001ADCA4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		550E82E618E218FB001ADCA4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		55754FAB182403C4002FA225 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -447,6 +541,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		550E82E418E218FB001ADCA4 /* Build configuration list for PBXNativeTarget "hex_disasm" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				550E82E518E218FB001ADCA4 /* Debug */,
+				550E82E618E218FB001ADCA4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		55754F9F182403C4002FA225 /* Build configuration list for PBXProject "PIC16F84A emulator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
