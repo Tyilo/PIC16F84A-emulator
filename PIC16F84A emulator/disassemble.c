@@ -75,7 +75,7 @@ char *disassemble_instruction(instruction *ins) {
 			} else {
 				format = "%s 0x%x, %c";
 				arg1 = ins->vars_WF.f;
-				arg2 = ins->vars_WF.d? 'W': 'F';
+				arg2 = (ins->vars_WF.d == 0)? 'W': 'F';
 			}
 			break;
 		case B:
@@ -118,7 +118,7 @@ char *disassemble_program(void) {
 		char *line = disassemble_instruction(ins);
 		
 		char *old_disassembly = disassembly;
-		asprintf(&disassembly, "%s0x%03x: %s\n", old_disassembly, i, line);
+		asprintf(&disassembly, "%s0x%03x\t%s\n", old_disassembly, i, line);
 		if(i > 0) {
 			free(old_disassembly);
 		}
