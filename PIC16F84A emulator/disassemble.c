@@ -69,7 +69,7 @@ char *disassemble_instruction(instruction *ins) {
 			arg1 = ins->vars_LW.k;
 			break;
 		case WF:
-			if(strcmp(name, "CLRF") == 0) {
+			if(strcmp(name, "CLRF") == 0 || strcmp(name, "MOVWF") == 0) {
 				format = " 0x%X";
 				arg1 = ins->vars_WF.f;
 			} else {
