@@ -16,7 +16,7 @@ uint8_t get_real_address(uint8_t address) {
 		address = ram[FSR_ADDRESS];
 	}
 	if(status->RP0) {
-		if(address != INDF_ADDRESS && address != PCL_ADDRESS && address != STATUS_ADDRESS && address != FSR_ADDRESS) {
+		if(address != INDF_ADDRESS && address != PCL_ADDRESS && address != STATUS_ADDRESS && address != FSR_ADDRESS && address != PCLATH_ADDRESS && address != INTCON_ADDRESS) {
 			address += 0x80;
 		}
 	}
@@ -28,5 +28,9 @@ uint8_t read_ram(uint8_t address) {
 }
 
 void write_ram(uint8_t address, uint8_t value) {
-	ram[get_real_address(address)] = value;
+	uint8_t real_address = address = get_real_address(address);
+	ram[real_address] = value;
+	if(real_address == TMR0_ADDRESS) {
+		//inhibit_TMR0_cycles = 2;
+	}
 }

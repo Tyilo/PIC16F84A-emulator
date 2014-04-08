@@ -105,13 +105,13 @@ NSNumber *NSNumberFromString(NSString *str) {
 	
 	struct symbol *s, *tmp;
 	
-	HASH_ITER(hh, prog_symbols, s, tmp) {
+	HASH_ITER(hh_name, prog_symbols_by_name, s, tmp) {
 		NSString *name = [NSString stringWithUTF8String:s->name];
 		[self.labels addObject:name];
 		[self.labelAddresses addObject:@(s->address)];
 	}
 	
-	HASH_ITER(hh, ram_symbols, s, tmp) {
+	HASH_ITER(hh_name, ram_symbols_by_name, s, tmp) {
 		NSString *name = [NSString stringWithUTF8String:s->name];
 		[self.variables addObject:name];
 		[self.variableAddresses addObject:@(s->address)];

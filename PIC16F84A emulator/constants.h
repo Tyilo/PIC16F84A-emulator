@@ -16,5 +16,15 @@
 #define FSR_ADDRESS    0x4
 #define PORTA_ADDRESS  0x5
 #define PORTB_ADDRESS  0x6
+#define EEDATA_ADDRESS 0x8
+#define EEADR_ADDRESS  0x9
+#define PCLATH_ADDRESS 0xA
+#define INTCON_ADDRESS 0xB
+
+#define OPTION_REG_ADDRESS 0x81
+#define TRISA_ADDRESS      0x85
+#define TRISB_ADDRESS      0x86
+#define EECON1_ADDRESS     0x88
+#define EECON2_ADDRESS     0x89
 
 #endif

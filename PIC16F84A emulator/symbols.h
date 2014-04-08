@@ -15,13 +15,18 @@
 struct symbol {
     const char *name;
     uint16_t address;
-    UT_hash_handle hh;
+    UT_hash_handle hh_name;
+	UT_hash_handle hh_address;
 };
 
-struct symbol *prog_symbols;
-struct symbol *ram_symbols;
+struct symbol *prog_symbols_by_name;
+struct symbol *prog_symbols_by_address;
+struct symbol *ram_symbols_by_name;
+struct symbol *ram_symbols_by_address;
 
+const char *prog_name(uint16_t address);
 uint16_t prog_address(char *str);
+const char *ram_name(uint16_t address);
 uint8_t ram_address(char *str);
 
 #endif

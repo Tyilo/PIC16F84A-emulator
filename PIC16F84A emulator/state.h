@@ -18,6 +18,7 @@ uint8_t ram[256];
 uint8_t W;
 uint16_t *stack_pointer;
 uint64_t cycle_counter;
+//uint8_t inhibit_TMR0_cycles = 0;
 
 typedef struct {
 	uint8_t C : 1;

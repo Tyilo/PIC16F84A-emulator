@@ -20,6 +20,7 @@
 #include "state.h"
 #include "utils.h"
 #include "symbols.h"
+#include "constants.h"
 
 #define CONFIG_ADDRESS 0x400e
 
@@ -149,7 +150,8 @@ void load_map(const char *path) {
 			struct symbol *s = malloc(sizeof(struct symbol));
 			s->name = strdup(name);
 			s->address = address;
-			HASH_ADD_KEYPTR(hh, prog_symbols, s->name, strlen(s->name), s);
+			HASH_ADD_KEYPTR(hh_name, prog_symbols_by_name, s->name, strlen(s->name), s);
+			HASH_ADD(hh_address, prog_symbols_by_address, address, sizeof(s->address), s);
 			
 			free(l_start);
 		}
@@ -214,7 +216,8 @@ void load_lst(const char *path) {
 		struct symbol *s = malloc(sizeof(struct symbol));
 		s->name = strdup(name);
 		s->address = address;
-		HASH_ADD_KEYPTR(hh, ram_symbols, s->name, strlen(s->name), s);
+		HASH_ADD_KEYPTR(hh_name, ram_symbols_by_name, s->name, strlen(s->name), s);
+		HASH_ADD(hh_address, ram_symbols_by_address, address, sizeof(s->address), s);
 		
 		free(l_start);
 	}
@@ -225,13 +228,13 @@ void load_lst(const char *path) {
 void load_files(const char *dir) {
 	struct symbol *s, *tmp;
 	
-	HASH_ITER(hh, prog_symbols, s, tmp) {
-		HASH_DEL(prog_symbols, s);
+	HASH_ITER(hh_name, prog_symbols_by_name, s, tmp) {
+		HASH_DELETE(hh_name, prog_symbols_by_name, s);
 		free((void *)s->name);
 	}
 	
-	HASH_ITER(hh, ram_symbols, s, tmp) {
-		HASH_DEL(ram_symbols, s);
+	HASH_ITER(hh_name, ram_symbols_by_name, s, tmp) {
+		HASH_DELETE(hh_name, ram_symbols_by_name, s);
 		free((void *)s->name);
 	}
 	
@@ -254,6 +257,31 @@ void load_files(const char *dir) {
 	
 	for(int i = 0; i < pglob.gl_matchc; i++) {
 		load_lst(pglob.gl_pathv[i]);
+	}
+	
+	struct {
+		uint8_t address;
+		char *name;
+	} special_symbols[] = {
+		{INDF_ADDRESS, "INDF"},
+		{TMR0_ADDRESS, "TMR0"},
+		{PCL_ADDRESS, "PCL"},
+		{STATUS_ADDRESS, "STATUS"},
+		{FSR_ADDRESS, "FSR"},
+		{PORTA_ADDRESS, "PORTA"},
+		{PORTB_ADDRESS, "PORTB"},
+		{EEDATA_ADDRESS, "EEDATA"},
+		{EEADR_ADDRESS, "EEADR"},
+		{PCLATH_ADDRESS, "PCLATH"},
+		{INTCON_ADDRESS, "INTCON"}
+	};
+	
+	for(int i = 0; i < LENGTH(special_symbols); i++) {
+		struct symbol *s = malloc(sizeof(struct symbol));
+		s->name = special_symbols[i].name;
+		s->address = special_symbols[i].address;
+		HASH_ADD_KEYPTR(hh_name, ram_symbols_by_name, s->name, strlen(s->name), s);
+		HASH_ADD(hh_address, ram_symbols_by_address, address, sizeof(s->address), s);
 	}
 	
 	free(dist_prefix);

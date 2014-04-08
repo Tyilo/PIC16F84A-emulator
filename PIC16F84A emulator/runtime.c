@@ -51,7 +51,7 @@ void run(void) {
 	
 	while(1) {
 		for(int i = 0; i < LENGTH(breakpoint_addresses); i++) {
-			if(breakpoint_addresses[i] == PC) {
+			if(breakpoint_addresses[i] + 1 == PC) {
 				bp_handler();
 				break;
 			}
@@ -67,6 +67,16 @@ void run(void) {
 		assert(def);
 		
 		def->implementation(ins);
+		
+		//printf("PORTB: 0x%X\n", ram[PORTB_ADDRESS]);
+		
+		//printf("%s\n", disassemble_instruction(ins));
+		
+		/*if(inhibit_TMR0_cycles > 0) {
+			inhibit_TMR0_cycles--;
+		} else {
+			
+		}*/
 		
 		PC++;
 		cycle_counter++;

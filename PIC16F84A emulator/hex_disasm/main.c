@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include "load.h"
 #include "disassemble.h"
+#include <string.h>
 
 int main(int argc, const char * argv[]) {
 	if(argc != 2) {
@@ -18,7 +19,14 @@ int main(int argc, const char * argv[]) {
 	}
 	
 	const char *path = argv[1];
-	load_hex(path);
+	
+	const char *ext = strrchr(path, '.');
+	
+	if(strcmp(ext, ".hex") == 0) {
+		load_hex(path);
+	} else {
+		load_files(path);
+	}
 	
 	char *disassembly = disassemble_program();
 	printf("%s", disassembly);

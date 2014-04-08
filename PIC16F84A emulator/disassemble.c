@@ -16,6 +16,7 @@
 #include "disassemble.h"
 #include "utils.h"
 #include "state.h"
+#include "symbols.h"
 
 instruction_def *ins_def_from_ins(instruction *ins) {
 	char ins_string[14];
@@ -60,33 +61,61 @@ char *disassemble_instruction(instruction *ins) {
 	const char *name = instruction_name(def);
 	
 	const char *format;
-	uint16_t arg1 = 0;
-	uint16_t arg2 = 0;
+	/*uint16_t arg1 = 0;
+	uint16_t arg2 = 0;*/
+	void *arg1 = NULL;
+	void *arg2 = NULL;
 	
 	switch(def->type) {
 		case LW:
 			format = " 0x%X";
-			arg1 = ins->vars_LW.k;
+			arg1 = (void *)(intptr_t)ins->vars_LW.k;
 			break;
-		case WF:
+		case WF: {
+			const char *s = ram_name(ins->vars_WF.f);
 			if(strcmp(name, "CLRF") == 0 || strcmp(name, "MOVWF") == 0) {
-				format = " 0x%X";
-				arg1 = ins->vars_WF.f;
+				if(!s) {
+					format = " 0x%X";
+					arg1 = (void *)(intptr_t)ins->vars_WF.f;
+				} else {
+					format = " %s";
+					arg1 = (void *)s;
+				}
 			} else {
-				format = " 0x%X, %c";
-				arg1 = ins->vars_WF.f;
-				arg2 = (ins->vars_WF.d == 0)? 'W': 'F';
+				if(!s) {
+					format = " 0x%X, %c";
+					arg1 = (void *)(intptr_t)ins->vars_WF.f;
+				} else {
+					format = " %s, %c";
+					arg1 = (void *)s;
+				}
+				arg2 = (void *)(intptr_t)((ins->vars_WF.d == 0)? 'W': 'F');
 			}
 			break;
-		case B:
-			format = " 0x%X, %d";
-			arg1 = ins->vars_B.f;
-			arg2 = ins->vars_B.b;
+		}
+		case B: {
+			const char *s = ram_name(ins->vars_B.f);
+			if(!s) {
+				format = " 0x%X, %d";
+				arg1 = (void *)(intptr_t)ins->vars_B.f;
+			} else {
+				format = " %s, %d";
+				arg1 = (void *)s;
+			}
+			arg2 = (void *)(intptr_t)ins->vars_B.b;
 			break;
-		case GOTO_CALL:
-			format = " 0x%X";
-			arg1 = ins->vars_GOTO_CALL.k;
+		}
+		case GOTO_CALL: {
+			const char *s = prog_name(ins->vars_GOTO_CALL.k);
+			if(!s) {
+				format = " 0x%X";
+				arg1 = (void *)(intptr_t)ins->vars_GOTO_CALL.k;
+			} else {
+				format = " %s";
+				arg1 = (void *)s;
+			}
 			break;
+		}
 		case NO_ARGS:
 			format = "";
 			break;
@@ -133,6 +162,13 @@ char *disassemble_program(void) {
 	int max_instruction_address = i;
 	
 	for(int i = 0; i < max_instruction_address; i++) {
+		const char *s = prog_name(i);
+		if(s) {
+			char *old_disassembly = disassembly;
+			asprintf(&disassembly, "%s\n%s:\n", old_disassembly, s);
+			free(old_disassembly);
+		}
+		
 		instruction *ins = (instruction *)&prog_mem[i];
 		char *line = disassemble_instruction(ins);
 		

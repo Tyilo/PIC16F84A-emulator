@@ -34,6 +34,7 @@
 		55787C3018D8B59100525B02 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 55787C2F18D8B59100525B02 /* main.m */; };
 		55787C3418D8B5AB00525B02 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55787C3218D8B5AB00525B02 /* InfoPlist.strings */; };
 		55787C3718D8B5B000525B02 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 55787C3518D8B5B000525B02 /* Credits.rtf */; };
+		5588B58A18E582C700C13D45 /* symbols.c in Sources */ = {isa = PBXBuildFile; fileRef = 55787BDB18D86DA700525B02 /* symbols.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -333,6 +334,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				550E82ED18E21A52001ADCA4 /* utils.c in Sources */,
+				5588B58A18E582C700C13D45 /* symbols.c in Sources */,
 				550E82EC18E21A46001ADCA4 /* instructions.c in Sources */,
 				550E82EA18E21A2E001ADCA4 /* disassemble.c in Sources */,
 				550E82EB18E21A34001ADCA4 /* load.c in Sources */,
@@ -548,6 +550,7 @@
 				550E82E618E218FB001ADCA4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		55754F9F182403C4002FA225 /* Build configuration list for PBXProject "PIC16F84A emulator" */ = {
 			isa = XCConfigurationList;
