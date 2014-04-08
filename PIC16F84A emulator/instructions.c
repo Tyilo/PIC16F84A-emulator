@@ -93,7 +93,7 @@ void sublw(instruction *ins) {
 	uint8_t k = ins->vars_LW.k;
 	uint8_t value = k - W;
 	
-	status->C = value > k;
+	status->C = k >= W;
 	status->DC = (value & 0xF) > (k & 0xF);
 	status->Z = value == 0;
 	
@@ -107,7 +107,7 @@ void subwf(instruction *ins) {
 	uint8_t f_value = read_ram(f);
 	uint8_t value = f_value - W;
 	
-	status->C = value > f_value;
+	status->C = f_value >= W;
 	status->DC = (value & 0xF) > (f_value & 0xF);
 	status->Z = value == 0;
 	
